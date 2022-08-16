@@ -11,7 +11,11 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-
+  void handleRegister(String mail, String login, String password){
+    print(mail);
+    print(login);
+    print(password);
+  }
   bool isLoggedIn = false;
 
   @override
@@ -21,7 +25,7 @@ class _AppState extends State<App> {
         appBar: AppBar(
           title: Text('New App'),
         ),
-        body: RegisterForm(),
+        body: RegisterForm(handleRegister),
       ),
     );
   }
