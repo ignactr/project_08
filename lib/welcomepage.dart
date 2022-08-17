@@ -5,10 +5,14 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Row(children: [
-          ElevatedButton(onPressed: () {}, child: Text('Zaloguj')),
-          ElevatedButton(onPressed: () {}, child: Text('Rejestruj')),
-        ],)
+        Image(image: AssetImage('images/logo.png'), height: 100,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(onPressed: () {}, child: Text('Zaloguj')),
+            ElevatedButton(onPressed: () {}, child: Text('Rejestruj')),
+          ],
+        )
       ],
     );
   }
