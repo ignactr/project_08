@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const registerInfo = SnackBar(
+  content: Text('Rejestrowanie wkrótce'),
+);
+
 class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,8 +13,13 @@ class WelcomePage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(onPressed: () {}, child: Text('Zaloguj')),
-            ElevatedButton(onPressed: () {}, child: Text('Rejestruj')),
+            Tooltip(
+              message: 'Zaloguj się do serwisu',
+              child: ElevatedButton(onPressed: () {}, child: Text('Zaloguj'))
+              ),
+            ElevatedButton(onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(registerInfo);
+            }, child: Text('Rejestruj')),
           ],
         )
       ],
