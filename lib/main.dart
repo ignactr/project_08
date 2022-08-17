@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'registerform.dart';
+import 'welcomepage.dart';
 
 void main() => runApp(App());
 
@@ -25,7 +26,7 @@ class _AppState extends State<App> {
         appBar: AppBar(
           title: Text('New App'),
         ),
-        body: RegisterForm(handleRegister),
+        body: WelcomePage(),
       ),
     );
   }
