@@ -13,10 +13,47 @@ class Event{
   Event(this.eventName,this.eventStartDate,this.eventEndDate,this.eventDescription);
 }
 
+class EventDisplay extends StatelessWidget {
+  final Event;
+  EventDisplay(this.Event);
+
+  String cut(){
+    String description = Event.eventDescription;
+    if(description.length > 50){
+      return description.substring(0,50) + ' ...';
+    }
+    return description;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: 
+      Column(children: [
+        Text(Event.eventName, style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 22
+          )
+        ),
+        Text('Rozpoczęcie: ${Event.eventStartDate}',style: TextStyle(fontSize: 18)),
+        Text('Zakończenie: ${Event.eventEndDate}',style: TextStyle(fontSize: 18)),
+        Text(cut()),
+      ]),
+      margin: EdgeInsets.fromLTRB(0,1,0,1),
+      padding: const EdgeInsets.all(2),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue),
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+    
+  }
+}
+
 class MainPage extends StatelessWidget {
   //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
   final List<Event> listOfEvents = [
-    Event('Lorem Ipsum', DateTime.parse("2022-09-20 8:45"),DateTime.parse("2022-09-23 23:59"),"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"),
+    Event('Lorem Ipsum', DateTime.parse("2022-09-20"),DateTime.parse("2022-09-23"),"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"),
+    Event('Wigilia Charytatywna', DateTime.parse("2022-12-24"),DateTime.parse("2022-12-24"),"Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!"),
   ];
 
   @override
@@ -35,7 +72,9 @@ class MainPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(registerInfo);
             }, child: Text('Rejestruj')),
           ],
-        )
+        ),
+        EventDisplay(listOfEvents[0]),
+          EventDisplay(listOfEvents[1])
       ],
     );
   }
