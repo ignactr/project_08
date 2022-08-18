@@ -4,7 +4,7 @@ const registerInfo = SnackBar(
   content: Text('Rejestrowanie wkrótce'),
 );
 
-class WelcomePage extends StatelessWidget {
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
