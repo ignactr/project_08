@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 class RegisterForm extends StatefulWidget {
   final handleRegister;
+  final enterPage;
 
-  RegisterForm(this.handleRegister);
+  RegisterForm(this.enterPage,this.handleRegister);
 
   @override
   RegisterFormState createState() {
-    return RegisterFormState(handleRegister);
+    return RegisterFormState(enterPage,handleRegister);
   }
 }
 
@@ -35,9 +36,9 @@ class MailInput extends StatelessWidget {
 
 class LoginInput extends StatelessWidget {
   final loginController;
-  
+
   LoginInput(this.loginController);
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -55,10 +56,10 @@ class LoginInput extends StatelessWidget {
 }
 
 class PassInput extends StatelessWidget {
-   final passController;
-  
-    PassInput(this.passController);
-  
+  final passController;
+
+  PassInput(this.passController);
+
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -68,11 +69,9 @@ class PassInput extends StatelessWidget {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'dane nie mogą być puste';
-          }
-          else if(value.length < 8){
+          } else if (value.length < 8) {
             return 'długość hasła to minimum 8 znaków';
-          }
-          else if(value.length > 30){
+          } else if (value.length > 30) {
             return 'długość hasła to maksymalnie 30 znaków';
           }
         },
@@ -88,8 +87,9 @@ class RegisterFormState extends State<RegisterForm> {
   final loginController = TextEditingController();
   final passController = TextEditingController();
   final handleRegister;
+  final enterPage;
 
-  RegisterFormState(this.handleRegister);
+  RegisterFormState(this.enterPage,this.handleRegister);
 
   @override
   Widget build(BuildContext context) {
@@ -102,17 +102,22 @@ class RegisterFormState extends State<RegisterForm> {
           MailInput(mailController),
           LoginInput(loginController),
           PassInput(passController),
-          ElevatedButton(
-            onPressed: (){
-              if(_formKey.currentState!.validate()){
-                handleRegister(mailController.text,loginController.text,passController.text);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
-                );
-              }
-            },
-            child: Text('Rejestruj'),
-          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            ElevatedButton(onPressed: () {
+              enterPage(0);
+            }, child: Text('Anuluj')),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  handleRegister(mailController.text, loginController.text,passController.text);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
+                    }
+                  },
+                  child: Text('Rejestruj'),
+                ),
+          ]),
         ],
       ),
     );

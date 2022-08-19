@@ -32,7 +32,7 @@ class _AppState extends State<App> {
         appBar: AppBar(
           title: Text('New App'),
         ),
-        body: _pageNumber == 0 ? MainPage(enterPage) : RegisterForm(handleRegister) ,
+        body: _pageNumber == 0 ? MainPage(enterPage) : RegisterForm(enterPage,handleRegister) ,
       ),
     );
   }
