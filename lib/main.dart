@@ -1,4 +1,3 @@
-import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'registerform.dart';
 import 'mainpage.dart';
@@ -14,16 +13,18 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   int _pageNumber = 0;
-  void enterPage(int pageNumber){
-    setState((){
+  void enterPage(int pageNumber) {
+    setState(() {
       _pageNumber = pageNumber;
     });
   }
-  void handleRegister(String mail, String login, String password){
+
+  void handleRegister(String mail, String login, String password) {
     print(mail);
     print(login);
     print(password);
   }
+
   bool isLoggedIn = false;
 
   @override
@@ -31,9 +32,11 @@ class _AppState extends State<App> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('New App'),
+          title: Text('Wydarzenia'),
         ),
-        body: _pageNumber == 0 ? MainPage(enterPage) : RegisterForm(enterPage,handleRegister) ,
+        body: _pageNumber == 0
+            ? MainPage(enterPage)
+            : RegisterForm(enterPage, handleRegister),
       ),
     );
   }

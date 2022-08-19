@@ -126,6 +126,7 @@ class RegisterFormState extends State<RegisterForm> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Processing Data')),
                   );
+                  enterPage(0);
                 }
               },
               child: Text('Rejestruj'),
