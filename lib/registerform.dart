@@ -25,7 +25,7 @@ class MailInput extends StatelessWidget {
         controller: mailController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Uzupełnij dane';
+            return 'dane nie mogą być puste';
           }
         },
       ),
@@ -46,7 +46,7 @@ class LoginInput extends StatelessWidget {
         controller: loginController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Uzupełnij dane';
+            return 'dane nie mogą być puste';
           }
         },
       ),
@@ -67,7 +67,13 @@ class PassInput extends StatelessWidget {
         controller: passController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Uzupełnij dane';
+            return 'dane nie mogą być puste';
+          }
+          else if(value.length < 8){
+            return 'długość hasła to minimum 8 znaków';
+          }
+          else if(value.length > 30){
+            return 'długość hasła to maksymalnie 30 znaków';
           }
         },
       ),
