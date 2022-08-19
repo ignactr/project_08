@@ -52,6 +52,9 @@ class EventDisplay extends StatelessWidget {
 
 class MainPage extends StatelessWidget {
   //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
+  final enterPage;
+  MainPage(this.enterPage);
+
   final List<Event> listOfEvents = [
     Event(
         'Lorem Ipsum',
@@ -93,8 +96,8 @@ class MainPage extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () {}, child: Text('Zaloguj'))),
                 ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(registerInfo);
+                    onPressed: (onPressed: () {
+                      enterPage(1);
                     },
                     child: Text('Rejestruj')),
               ],
@@ -114,40 +117,8 @@ class MainPage extends StatelessWidget {
         EventDisplay(listOfEvents[3]),
         EventDisplay(listOfEvents[0]),
         EventDisplay(listOfEvents[1]),
+        EventDisplay(listOfEvents[1])
       ],
     );
-    // return Column(
-    //   children: <Widget>[
-    //     Image(
-    //       image: AssetImage('images/logo.png'),
-    //       height: 100,
-    //     ),
-    //     Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //       children: [
-    //         Tooltip(
-    //             message: 'Zaloguj się do serwisu',
-    //             child:
-    //                 ElevatedButton(onPressed: () {}, child: Text('Zaloguj'))),
-    //         ElevatedButton(
-    //             onPressed: () {
-    //               ScaffoldMessenger.of(context).showSnackBar(registerInfo);
-    //             },
-    //             child: Text('Rejestruj')),
-    //       ],
-    //     ),
-    //   ],
-    // );
   }
-
-  // EventDisplay(listOfEvents[1]),
-  // EventDisplay(listOfEvents[2]),
-  // EventDisplay(listOfEvents[1]),
-  // EventDisplay(listOfEvents[2]),
-  // EventDisplay(listOfEvents[3]),
-  // EventDisplay(listOfEvents[3]),
-  // EventDisplay(listOfEvents[0]),
-  // EventDisplay(listOfEvents[3]),
-  // EventDisplay(listOfEvents[0]),
-  // EventDisplay(listOfEvents[1])
 }

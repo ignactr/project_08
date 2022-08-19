@@ -12,6 +12,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  int _pageNumber = 0;
+  void enterPage(int pageNumber){
+    setState((){
+      _pageNumber = pageNumber;
+    });
+  }
   void handleRegister(String mail, String login, String password){
     print(mail);
     print(login);
@@ -26,7 +32,7 @@ class _AppState extends State<App> {
         appBar: AppBar(
           title: Text('New App'),
         ),
-        body: MainPage(),
+        body: _pageNumber == 0 ? MainPage(enterPage) : RegisterForm(enterPage,handleRegister) ,
       ),
     );
   }
