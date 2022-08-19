@@ -96,7 +96,7 @@ class MainPage extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () {}, child: Text('Zaloguj'))),
                 ElevatedButton(
-                    onPressed: (onPressed: () {
+                    onPressed: () {
                       enterPage(1);
                     },
                     child: Text('Rejestruj')),
