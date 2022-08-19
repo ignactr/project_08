@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 class RegisterForm extends StatefulWidget {
   final handleRegister;
@@ -109,7 +111,9 @@ class RegisterFormState extends State<RegisterForm> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  handleRegister(mailController.text, loginController.text,passController.text);
+                  var pass = utf8.encode(passController.text);
+                  var passHash = sha1.convert(pass);
+                  handleRegister(mailController.text, loginController.text,passHash.toString());
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),
                     );
