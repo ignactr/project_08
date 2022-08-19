@@ -6,11 +6,11 @@ class RegisterForm extends StatefulWidget {
   final handleRegister;
   final enterPage;
 
-  RegisterForm(this.enterPage,this.handleRegister);
+  RegisterForm(this.enterPage, this.handleRegister);
 
   @override
   RegisterFormState createState() {
-    return RegisterFormState(enterPage,handleRegister);
+    return RegisterFormState(enterPage, handleRegister);
   }
 }
 
@@ -28,8 +28,13 @@ class MailInput extends StatelessWidget {
         controller: mailController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'dane nie mogą być puste';
+            return 'Dane nie mogą być puste';
+          } else if (!RegExp(
+                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(value)) {
+            return 'Wprowadź poprawny adres E-mail';
           }
+          ;
         },
       ),
     ]);
@@ -49,7 +54,7 @@ class LoginInput extends StatelessWidget {
         controller: loginController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'dane nie mogą być puste';
+            return 'Dane nie mogą być puste';
           }
         },
       ),
@@ -71,11 +76,11 @@ class PassInput extends StatelessWidget {
         controller: passController,
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'dane nie mogą być puste';
+            return 'Dane nie mogą być puste';
           } else if (value.length < 8) {
-            return 'długość hasła to minimum 8 znaków';
+            return 'Długość hasła to minimum 8 znaków';
           } else if (value.length > 30) {
-            return 'długość hasła to maksymalnie 30 znaków';
+            return 'Długość hasła to maksymalnie 30 znaków';
           }
         },
       ),
@@ -92,7 +97,7 @@ class RegisterFormState extends State<RegisterForm> {
   final handleRegister;
   final enterPage;
 
-  RegisterFormState(this.enterPage,this.handleRegister);
+  RegisterFormState(this.enterPage, this.handleRegister);
 
   @override
   Widget build(BuildContext context) {
@@ -106,22 +111,25 @@ class RegisterFormState extends State<RegisterForm> {
           LoginInput(loginController),
           PassInput(passController),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            ElevatedButton(onPressed: () {
-              enterPage(0);
-            }, child: Text('Anuluj')),
+            ElevatedButton(
+                onPressed: () {
+                  enterPage(0);
+                },
+                child: Text('Anuluj')),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   var pass = utf8.encode(passController.text);
                   var passHash = sha1.convert(pass);
-                  handleRegister(mailController.text, loginController.text,passHash.toString());
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
-                    }
-                  },
-                  child: Text('Rejestruj'),
-                ),
+                  handleRegister(mailController.text, loginController.text,
+                      passHash.toString());
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Processing Data')),
+                  );
+                }
+              },
+              child: Text('Rejestruj'),
+            ),
           ]),
         ],
       ),
