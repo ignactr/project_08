@@ -39,7 +39,7 @@ class EventDisplay extends StatelessWidget {
         Text(cut()),
       ]),
       margin: EdgeInsets.fromLTRB(0,1,0,1),
-      padding: const EdgeInsets.all(2),
+      padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue),
         borderRadius: BorderRadius.circular(10),
@@ -51,6 +51,9 @@ class EventDisplay extends StatelessWidget {
 
 class MainPage extends StatelessWidget {
   //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
+  final enterPage;
+  MainPage(this.enterPage);
+
   final List<Event> listOfEvents = [
     Event('Lorem Ipsum', DateTime.parse("2022-09-20"),DateTime.parse("2022-09-23"),"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"),
     Event('Wigilia Charytatywna', DateTime.parse("2022-12-24"),DateTime.parse("2022-12-24"),"Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!"),
@@ -59,7 +62,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
+      children: [
         Image(image: AssetImage('images/logo.png'), height: 100,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -69,12 +72,12 @@ class MainPage extends StatelessWidget {
               child: ElevatedButton(onPressed: () {}, child: Text('Zaloguj'))
               ),
             ElevatedButton(onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(registerInfo);
+              enterPage(1);
             }, child: Text('Rejestruj')),
           ],
         ),
         EventDisplay(listOfEvents[0]),
-          EventDisplay(listOfEvents[1])
+        EventDisplay(listOfEvents[1])
       ],
     );
   }
