@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'registerform.dart';
 import 'mainpage.dart';
+import 'loginform.dart';
 
 void main() => runApp(App());
 
@@ -17,6 +18,10 @@ class _AppState extends State<App> {
     setState(() {
       _pageNumber = pageNumber;
     });
+  }
+
+  void handleLogin(String mailToLog){
+    
   }
 
   void handleRegister(String mail, String login, String password) {
@@ -57,7 +62,9 @@ class _AppState extends State<App> {
         ),
         body: _pageNumber == 0
             ? MainPage(enterPage)
-            : RegisterForm(enterPage, handleRegister, users),
+            : _pageNumber == 1
+            ? RegisterForm(enterPage, handleRegister, users)
+            : LoginForm(enterPage, handleLogin, users)  
       ),
     );
   }
