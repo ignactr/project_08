@@ -20,9 +20,7 @@ class _AppState extends State<App> {
   }
 
   void handleRegister(String mail, String login, String password) {
-    print(mail);
-    print(login);
-    print(password);
+    users.add({'userMail':mail, 'userLogin': login, 'userPass': password});
   }
 
   var users = [
