@@ -5,20 +5,31 @@ import 'dart:convert';
 class RegisterForm extends StatefulWidget {
   final handleRegister;
   final enterPage;
+  final users;
 
-  RegisterForm(this.enterPage, this.handleRegister);
+  RegisterForm(this.enterPage, this.handleRegister, this.users);
 
   @override
   RegisterFormState createState() {
-    return RegisterFormState(enterPage, handleRegister);
+    return RegisterFormState(enterPage, handleRegister, users);
   }
 }
 
 //-------------------------------------------------------------------------
 class MailInput extends StatelessWidget {
   final mailController;
+  final users;
 
-  MailInput(this.mailController);
+  MailInput(this.mailController, this.users);
+
+  bool _isMailUnoccupied(givenMail){
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userMail'] == givenMail){
+        return false;
+      }
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +44,8 @@ class MailInput extends StatelessWidget {
                   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
               .hasMatch(value)) {
             return 'Wprowadź poprawny adres E-mail';
+          } else if(_isMailUnoccupied(value) == false){
+            return 'Podany email jest już zajęty';
           }
           ;
         },
@@ -96,8 +109,9 @@ class RegisterFormState extends State<RegisterForm> {
   final passController = TextEditingController();
   final handleRegister;
   final enterPage;
+  final users;
 
-  RegisterFormState(this.enterPage, this.handleRegister);
+  RegisterFormState(this.enterPage, this.handleRegister, this.users);
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +121,7 @@ class RegisterFormState extends State<RegisterForm> {
         children: <Widget>[
           Text('Zarejestruj się ',
               style: TextStyle(fontWeight: FontWeight.bold)),
-          MailInput(mailController),
+          MailInput(mailController, users),
           LoginInput(loginController),
           PassInput(passController),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -121,10 +135,9 @@ class RegisterFormState extends State<RegisterForm> {
                 if (_formKey.currentState!.validate()) {
                   var pass = utf8.encode(passController.text);
                   var passHash = sha1.convert(pass);
-                  handleRegister(mailController.text, loginController.text,
-                      passHash.toString());
+                  handleRegister(mailController.text, loginController.text, passHash.toString());
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
+                    const SnackBar(content: Text('Dodano użytkownika')),
                   );
                   enterPage(0);
                 }
