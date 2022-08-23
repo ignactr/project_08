@@ -72,27 +72,32 @@ class _AppState extends State<App> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           toolbarHeight: 55, //set your height
           flexibleSpace: SafeArea(
             child: Container(
-              color: Colors.blue,
+              color: Colors.black,
               child: loggedMail==null ? Row(
                 children: [
                   ElevatedButton(
                         onPressed: () {
                           enterPage(2);
                         }, 
-                        child: Text('Zaloguj')),
+                        child: Text('Zaloguj'),
+                        style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                  SizedBox(width: 10),
                   ElevatedButton(
                         onPressed: () {
                           enterPage(1);
                         }, 
-                        child: Text('Rejestruj')),
+                        child: Text('Rejestruj'),
+                        style: ElevatedButton.styleFrom(primary: Colors.grey )),
                 ],
               )
               : Row(
                   children: [
-                    Text('zalogowany: $loggedLogin'),
+                    Text('zalogowany: $loggedLogin', style: TextStyle(color: Colors.white, fontSize: 20)),
+                    SizedBox(width: 10),
                     ElevatedButton(
                       onPressed: () {
                         setState(() {
@@ -100,7 +105,8 @@ class _AppState extends State<App> {
                           loggedLogin = null;
                         });
                       },
-                      child: Text('Wyloguj')),
+                      child: Text('Wyloguj', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(primary: Colors.grey )),
                   ],
                 )
             ),

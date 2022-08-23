@@ -113,7 +113,8 @@ class LoginFormState extends State<LoginForm> {
                 onPressed: () {
                   enterPage(0);
                 },
-                child: Text('Anuluj')),
+                child: Text('Anuluj'),
+                style: ElevatedButton.styleFrom(primary: Colors.grey )),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
@@ -131,7 +132,7 @@ class LoginFormState extends State<LoginForm> {
               }
             ,
               child: Text('Zaloguj'),
-            ),
+              style: ElevatedButton.styleFrom(primary: Colors.grey )),
           ])
         ]
     ));
