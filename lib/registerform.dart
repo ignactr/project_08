@@ -119,8 +119,6 @@ class RegisterFormState extends State<RegisterForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          Text('Zarejestruj się ',
-              style: TextStyle(fontWeight: FontWeight.bold)),
           MailInput(mailController, users),
           LoginInput(loginController),
           PassInput(passController),
@@ -129,7 +127,8 @@ class RegisterFormState extends State<RegisterForm> {
                 onPressed: () {
                   enterPage(0);
                 },
-                child: Text('Anuluj')),
+                child: Text('Anuluj'),
+                style: ElevatedButton.styleFrom(primary: Colors.grey )),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
@@ -143,7 +142,7 @@ class RegisterFormState extends State<RegisterForm> {
                 }
               },
               child: Text('Rejestruj'),
-            ),
+              style: ElevatedButton.styleFrom(primary: Colors.grey )),
           ]),
         ],
       ),

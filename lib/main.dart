@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'registerform.dart';
 import 'mainpage.dart';
+import 'loginform.dart';
 
 void main() => runApp(App());
 
@@ -19,8 +20,25 @@ class _AppState extends State<App> {
     });
   }
 
+  void handleLogin(String mailToLog){
+    String? loginToLog;
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userMail'] == mailToLog){
+        loginToLog = users[i]['userLogin'];
+      }
+    }
+    setState(() {
+      loggedMail = mailToLog;
+      loggedLogin = loginToLog;
+    });
+    print(loggedLogin);
+    print(loggedMail);
+  }
+
   void handleRegister(String mail, String login, String password) {
-    users.add({'userMail':mail, 'userLogin': login, 'userPass': password});
+    setState(() {
+      users.add({'userMail':mail, 'userLogin': login, 'userPass': password});
+    });
   }
 
   var users = [
@@ -46,18 +64,61 @@ class _AppState extends State<App> {
     }, //pass: mlecznygolem
   ];
 
-  bool isLoggedIn = false;
+  String? loggedMail;
+  String? loggedLogin;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Wydarzenia'),
+          backgroundColor: Colors.black,
+          toolbarHeight: 55, //set your height
+          flexibleSpace: SafeArea(
+            child: Container(
+              color: Colors.black,
+              child: _pageNumber == 1 ? Text('Zarejestruj się', style: TextStyle(color: Colors.white, fontSize: 30))
+               : _pageNumber == 2 ? Text('Zaloguj się', style: TextStyle(color: Colors.white, fontSize: 30))
+               : loggedMail==null ? Row(
+                children: [
+                  ElevatedButton(
+                        onPressed: () {
+                          enterPage(2);
+                        }, 
+                        child: Text('Zaloguj'),
+                        style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                        onPressed: () {
+                          enterPage(1);
+                        }, 
+                        child: Text('Rejestruj'),
+                        style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                ],
+              )
+              : Row(
+                  children: [
+                    Text('zalogowany: $loggedLogin', style: TextStyle(color: Colors.white, fontSize: 20)),
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          loggedMail = null;
+                          loggedLogin = null;
+                        });
+                      },
+                      child: Text('Wyloguj', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                  ],
+                )
+            ),
+          )
         ),
         body: _pageNumber == 0
             ? MainPage(enterPage)
-            : RegisterForm(enterPage, handleRegister, users),
+            : _pageNumber == 1
+            ? RegisterForm(enterPage, handleRegister, users)
+            : LoginForm(enterPage, handleLogin, users)  
       ),
     );
   }

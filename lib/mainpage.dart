@@ -94,7 +94,10 @@ class MainPage extends StatelessWidget {
                 Tooltip(
                     message: 'Zaloguj się do serwisu',
                     child: ElevatedButton(
-                        onPressed: () {}, child: Text('Zaloguj'))),
+                        onPressed: () {
+                          enterPage(2);
+                        }, 
+                        child: Text('Zaloguj'))),
                 ElevatedButton(
                     onPressed: () {
                       enterPage(1);
