@@ -64,15 +64,47 @@ class _AppState extends State<App> {
     }, //pass: mlecznygolem
   ];
 
-  String? loggedMail = null;
-  String? loggedLogin = null;
+  String? loggedMail;
+  String? loggedLogin;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Wydarzenia'),
+          toolbarHeight: 55, //set your height
+          flexibleSpace: SafeArea(
+            child: Container(
+              color: Colors.blue,
+              child: loggedMail==null ? Row(
+                children: [
+                  ElevatedButton(
+                        onPressed: () {
+                          enterPage(2);
+                        }, 
+                        child: Text('Zaloguj')),
+                  ElevatedButton(
+                        onPressed: () {
+                          enterPage(1);
+                        }, 
+                        child: Text('Rejestruj')),
+                ],
+              )
+              : Row(
+                  children: [
+                    Text('zalogowany: $loggedLogin'),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          loggedMail = null;
+                          loggedLogin = null;
+                        });
+                      },
+                      child: Text('Wyloguj')),
+                  ],
+                )
+            ),
+          )
         ),
         body: _pageNumber == 0
             ? MainPage(enterPage)
