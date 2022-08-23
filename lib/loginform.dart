@@ -33,7 +33,7 @@ class MailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('email:'),
+      Text('email:',style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         controller: mailController,
         validator: (value) {
@@ -59,7 +59,7 @@ class PassInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('hasło:'),
+      Text('hasło:',style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         controller: passController,
         validator: (value) {
