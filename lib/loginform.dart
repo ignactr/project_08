@@ -105,7 +105,6 @@ class LoginFormState extends State<LoginForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          const Text('Zaloguj się ',style: TextStyle(fontWeight: FontWeight.bold)),
           MailInput(mailController, users),
           PassInput(passController, passValidation, mailController.text),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [

@@ -119,8 +119,6 @@ class RegisterFormState extends State<RegisterForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          Text('Zarejestruj się ',
-              style: TextStyle(fontWeight: FontWeight.bold)),
           MailInput(mailController, users),
           LoginInput(loginController),
           PassInput(passController),

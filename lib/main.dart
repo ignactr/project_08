@@ -77,7 +77,9 @@ class _AppState extends State<App> {
           flexibleSpace: SafeArea(
             child: Container(
               color: Colors.black,
-              child: loggedMail==null ? Row(
+              child: _pageNumber == 1 ? Text('Zarejestruj się', style: TextStyle(color: Colors.white, fontSize: 30))
+               : _pageNumber == 2 ? Text('Zaloguj się', style: TextStyle(color: Colors.white, fontSize: 30))
+               : loggedMail==null ? Row(
                 children: [
                   ElevatedButton(
                         onPressed: () {
