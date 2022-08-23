@@ -21,7 +21,18 @@ class _AppState extends State<App> {
   }
 
   void handleLogin(String mailToLog){
-    print('mail do zalogowania: ${mailToLog}');
+    String? loginToLog;
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userMail'] == mailToLog){
+        loginToLog = users[i]['userLogin'];
+      }
+    }
+    setState(() {
+      loggedMail = mailToLog;
+      loggedLogin = loginToLog;
+    });
+    print(loggedLogin);
+    print(loggedMail);
   }
 
   void handleRegister(String mail, String login, String password) {
@@ -53,7 +64,8 @@ class _AppState extends State<App> {
     }, //pass: mlecznygolem
   ];
 
-  bool isLoggedIn = false;
+  String? loggedMail = null;
+  String? loggedLogin = null;
 
   @override
   Widget build(BuildContext context) {
