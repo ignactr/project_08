@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
+import 'package:crypto/crypto.dart';
 
 class LoginForm extends StatefulWidget {
   final enterPage;
@@ -16,8 +17,18 @@ class LoginForm extends StatefulWidget {
 
 class MailInput extends StatelessWidget {
   final mailController;
+  final users;
 
-  MailInput(this.mailController);
+  MailInput(this.mailController, this.users);
+
+  bool _doesMailExist(givenMail){
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userMail'] == givenMail){
+        return true;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +40,9 @@ class MailInput extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return 'Dane nie mogą być puste';
           }
+          if(_doesMailExist(value) == false){
+            return 'podany email nie istnieje';
+          }
         },
       ),
     ]);
@@ -37,8 +51,10 @@ class MailInput extends StatelessWidget {
 
 class PassInput extends StatelessWidget {
   final passController;
+  final passValidation;
+  final mail;
 
-  PassInput(this.passController);
+  PassInput(this.passController, this.passValidation, this.mail);
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +81,23 @@ class LoginFormState extends State<LoginForm> {
   final users;
 
   LoginFormState(this.enterPage,this.handleLogin,this.users);
+
+  bool passValidation(String mail,String password){
+    var pass = utf8.encode(password);
+    var passHash = sha1.convert(pass).toString();
+    if(mail == null){
+      return false;
+    }
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userMail'] == mail){
+        if(users[i]['userPass'] == passHash){
+          return true;
+        }
+        return false;
+      } 
+    }
+    return false;
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -73,8 +106,8 @@ class LoginFormState extends State<LoginForm> {
       child: Column(
         children: <Widget>[
           const Text('Zaloguj się ',style: TextStyle(fontWeight: FontWeight.bold)),
-          MailInput(mailController),
-          PassInput(passController),
+          MailInput(mailController, users),
+          PassInput(passController, passValidation, mailController.text),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             ElevatedButton(
                 onPressed: () {
@@ -84,10 +117,16 @@ class LoginFormState extends State<LoginForm> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Przetwarzanie danych')),
-                  );
-                  enterPage(0);
+                  if(passValidation(mailController.text, passController.text)){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Zalogowano!')));
+                    handleLogin(mailController.text);
+                    enterPage(0);
+                  }
+                  else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Błędne hasło!'), backgroundColor: Colors.red,));
+                  }
                 }
               }
             ,

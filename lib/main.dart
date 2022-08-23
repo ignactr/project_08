@@ -21,11 +21,13 @@ class _AppState extends State<App> {
   }
 
   void handleLogin(String mailToLog){
-    
+    print('mail do zalogowania: ${mailToLog}');
   }
 
   void handleRegister(String mail, String login, String password) {
-    users.add({'userMail':mail, 'userLogin': login, 'userPass': password});
+    setState(() {
+      users.add({'userMail':mail, 'userLogin': login, 'userPass': password});
+    });
   }
 
   var users = [
