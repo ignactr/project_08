@@ -28,11 +28,8 @@ class _AppState extends State<App> {
       }
     }
     setState(() {
-      loggedMail = mailToLog;
       loggedLogin = loginToLog;
     });
-    print(loggedLogin);
-    print(loggedMail);
   }
 
   void handleRegister(String mail, String login, String password) {
@@ -64,7 +61,6 @@ class _AppState extends State<App> {
     }, //pass: mlecznygolem
   ];
 
-  String? loggedMail;
   String? loggedLogin;
 
   @override
@@ -79,7 +75,7 @@ class _AppState extends State<App> {
               color: Colors.black,
               child: _pageNumber == 1 ? Text('Zarejestruj się', style: TextStyle(color: Colors.white, fontSize: 30))
                : _pageNumber == 2 ? Text('Zaloguj się', style: TextStyle(color: Colors.white, fontSize: 30))
-               : loggedMail==null ? Row(
+               : loggedLogin==null ? Row(
                 children: [
                   ElevatedButton(
                         onPressed: () {
@@ -103,7 +99,6 @@ class _AppState extends State<App> {
                     ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          loggedMail = null;
                           loggedLogin = null;
                         });
                       },

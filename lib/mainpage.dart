@@ -56,6 +56,7 @@ class MainPage extends StatelessWidget {
 
   final List<Map<String, String>> eventList = [
     {
+      'Author': 'ignactr',
       'Title': 'Lorem Ipsum',
       'StartDate': '2022-09-20',
       'EndDate': '2022-09-23',
@@ -64,6 +65,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/grafika.png'
     },
     {
+      'Author': 'FekalnyYeti',
       'Title': 'Kobiety Wschodu FUTURE IS NOW',
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-29',
@@ -72,6 +74,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/grafika.png'
     },
     {
+      'Author': 'Arczin',
       'Title': 'Konkurs - "Sposoby widzenia"',
       'StartDate': '2022-06-27',
       'EndDate': '2022-09-22',
@@ -80,6 +83,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/grafika.png'
     },
     {
+      'Author': 'ignactr',
       'Title': 'Wystawa Magdaleny Talmon',
       'StartDate': '2022-07-07',
       'EndDate': '2022-08-31',
@@ -88,6 +92,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/wigilia.png'
     },
     {
+      'Author': 'Arczin',
       'Title': 'Wigilia Charytatywna',
       'StartDate': '2022-12-24 15:30',
       'EndDate': '2022-12-24 20:00',
@@ -96,6 +101,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/wigilia.png'
     },
     {
+      'Author': 'Arczin',
       'Title': 'Spektakl "Hetmański bal"',
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-31',
@@ -104,6 +110,7 @@ class MainPage extends StatelessWidget {
       'Image': 'images/wigilia.png'
     },
     {
+      'Author': 'ignactr',
       'Title': 'Joga w Parku w Białymstoku',
       'StartDate': '2022-06-29',
       'EndDate': '2022-12-24 20:00',
