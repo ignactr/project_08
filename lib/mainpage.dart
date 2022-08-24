@@ -82,6 +82,15 @@ class _MainPageState extends State<MainPage> {
   DateTime? endDateToShow; 
   String? descriptionToShow; 
 
+  void handleDelete(eventName){
+    for(var i = 0; i < eventList.length; i++){
+      if(eventList[i]['Title'] == eventName){
+        eventList.removeAt(i);
+        handleGoBack();
+      }
+    }
+  }
+
   void handleDetails(author, name, startDate, endDate, description){
     setState(() {
       authorToShow = author;
@@ -100,7 +109,7 @@ class _MainPageState extends State<MainPage> {
       descriptionToShow = null;
     });
   }
-  final List<Map> eventList = [
+  List<Map> eventList = [
     {
       'Author': 'ignactr',
       'Title': 'Lorem Ipsum',
@@ -152,7 +161,7 @@ class _MainPageState extends State<MainPage> {
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-31',
       'Description':
-          'Hetmański Bal to spektakl, w którym grupa Spider Demon Massacre pragnie wyprawić urodziny jednemu z najbardziej zasłużonych mieszkańców Białegostoku – Janowi Klemensowi Branickiemu. Przy stole zasiądą najdostojniejsi goście oraz przyjaciele, a całą uroczystość poprowadzi nadworny aktor, gawędziarz. W tym spotkaniu przyjrzymy się historii naszego miasta z różnych stron. Nie boimy się zajrzeć w jasne i ciemne zakamarki naszego kulturowego dziedzictwa. W każdym elemencie historii tkwi potencjał, który odpowiednio wykorzystany może uczyć i doprowadzić do czegoś ważnego.',
+          'Hetmański Bal to spektakl, w którym grupa Spider Demon Massacre pragnie wyprawić urodziny jednemu z najbardziej zasłużonych mieszkańców Białegostoku – Janowi Klemensowi Branickiemu. Przy stole zasiądą najdostojniejsi goście oraz przyjaciele, a całą uroczystość poprowadzi nadworny aktor, gawędziarz. W tym spotkaniu przyjrzymy się historii naszego miasta z różnych stron. Nie boimy się zajrzeć w jasne i ciemne zakamarki naszego kulturowego dziedzictwa.',
       'Image': 'images/wigilia.png'
     },
     {
@@ -173,7 +182,7 @@ class _MainPageState extends State<MainPage> {
       if (r != 0) return r;
       return m1["EndDate"].compareTo(m2["StartDate"]);
     });
-    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow, handleGoBack, loggedLogin) : ListView.builder(
+    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow, handleGoBack, loggedLogin, handleDelete) : ListView.builder(
       padding: const EdgeInsets.all(8.0),
       itemExtent: 106.0,
       itemCount: eventList.length,

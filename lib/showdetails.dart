@@ -8,9 +8,10 @@ class ShowDetails extends StatelessWidget {
   final description;
   final handleGoBack;
   final loggedLogin;
+  final handleDelete;
 
   ShowDetails(this.author, this.name, this.startDate, this.endDate,
-      this.description, this.handleGoBack, this.loggedLogin);
+      this.description, this.handleGoBack, this.loggedLogin, this.handleDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class ShowDetails extends StatelessWidget {
       child: Container(
         child: Stack(
           children: <Widget>[
-            new Positioned(
+            Positioned(
                 child: Column(
               children: [
                 Text('Nazwa: $name',
@@ -26,7 +27,7 @@ class ShowDetails extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontSize: 25)),
                 Text('Opis: $description',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 25)),
+                    style: TextStyle(color: Colors.black, fontSize: 20)),
                 Text('Rozpoczęcie: $startDate',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.black, fontSize: 25)),
@@ -38,8 +39,8 @@ class ShowDetails extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontSize: 25)),
               ],
             )),
-            new Positioned(
-              child: new Align(
+            Positioned(
+              child: Align(
                   alignment: FractionalOffset.bottomCenter,
                   child: author == loggedLogin
                       ? Row(
@@ -54,7 +55,7 @@ class ShowDetails extends StatelessWidget {
                                       primary: Colors.grey)),
                               ElevatedButton(
                                   onPressed: () {
-                                    print('git');
+                                    handleDelete(name);
                                   },
                                   child: Text('Usuń wydarzenie'),
                                   style: ElevatedButton.styleFrom(
