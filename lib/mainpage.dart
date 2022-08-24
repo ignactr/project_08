@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'showdetails.dart';
 
 const registerInfo = SnackBar(
   content: Text('Rejestrowanie wkrótce'),
@@ -60,21 +61,37 @@ class CustomListItem extends StatelessWidget {
 
 class MainPage extends StatefulWidget {
   final enterPage;
-  MainPage(this.enterPage);
+  String? loggedLogin;
+  MainPage(this.enterPage, this.loggedLogin);
   @override
   State<StatefulWidget> createState(){
-    return _MainPageState(enterPage);
+    return _MainPageState(enterPage, loggedLogin);
   }
 }
 
 class _MainPageState extends State<MainPage> {
-  //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
+  
   final enterPage;
-  _MainPageState(this.enterPage);
+  String? loggedLogin;
+
+  _MainPageState(this.enterPage, this.loggedLogin);
+
+  String? authorToShow; 
+  String? nameToShow; 
+  DateTime? startDateToShow;  
+  DateTime? endDateToShow; 
+  String? descriptionToShow; 
 
   void handleDetails(author, name, startDate, endDate, description){
-    print(author);
+    setState(() {
+      authorToShow = author;
+      nameToShow = name;
+      startDateToShow = startDate;
+      endDateToShow = endDate;
+      descriptionToShow = description;
+    });
   }
+
 
   final List<Map<String, String>> eventList = [
     {
@@ -144,7 +161,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow) : ListView.builder(
       padding: const EdgeInsets.all(8.0),
       itemExtent: 106.0,
       itemCount: eventList.length,

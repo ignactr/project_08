@@ -110,7 +110,7 @@ class _AppState extends State<App> {
           )
         ),
         body: _pageNumber == 0
-            ? MainPage(enterPage)
+            ? MainPage(enterPage,loggedLogin)
             : _pageNumber == 1
             ? RegisterForm(enterPage, handleRegister, users)
             : LoginForm(enterPage, handleLogin, users)  
