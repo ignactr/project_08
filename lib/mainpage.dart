@@ -91,6 +91,15 @@ class _MainPageState extends State<MainPage> {
       descriptionToShow = description;
     });
   }
+  void handleGoBack(){
+    setState(() {
+      authorToShow = null;
+      nameToShow = null;
+      startDateToShow = null;
+      endDateToShow = null;
+      descriptionToShow = null;
+    });
+  }
   final List<Map> eventList = [
     {
       'Author': 'ignactr',
@@ -164,7 +173,7 @@ class _MainPageState extends State<MainPage> {
       if (r != 0) return r;
       return m1["EndDate"].compareTo(m2["StartDate"]);
     });
-    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow) : ListView.builder(
+    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow, handleGoBack, loggedLogin) : ListView.builder(
       padding: const EdgeInsets.all(8.0),
       itemExtent: 106.0,
       itemCount: eventList.length,
