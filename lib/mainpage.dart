@@ -36,7 +36,8 @@ class CustomListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          handleDetails(eventAuthor, eventName, eventStartDate, eventEndDate, eventDescription);
+          handleDetails(eventAuthor, eventName, eventStartDate, eventEndDate,
+              eventDescription);
         },
         child: Container(
           child: Column(children: [
@@ -68,7 +69,6 @@ class MainPage extends StatefulWidget {
     return _MainPageState(enterPage, loggedLogin);
   }
 }
-
 class _MainPageState extends State<MainPage> {
   
   final enterPage;
@@ -91,9 +91,7 @@ class _MainPageState extends State<MainPage> {
       descriptionToShow = description;
     });
   }
-
-
-  final List<Map<String, String>> eventList = [
+  final List<Map> eventList = [
     {
       'Author': 'ignactr',
       'Title': 'Lorem Ipsum',
@@ -161,6 +159,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    eventList.sort((m1, m2) {
+      var r = m1["StartDate"].compareTo(m2["StartDate"]);
+      if (r != 0) return r;
+      return m1["EndDate"].compareTo(m2["StartDate"]);
+    });
     return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow) : ListView.builder(
       padding: const EdgeInsets.all(8.0),
       itemExtent: 106.0,
@@ -169,12 +172,11 @@ class _MainPageState extends State<MainPage> {
         final item = eventList[index];
 
         return CustomListItem(
-          eventAuthor: eventList[index]['Author'].toString(),
+          eventAuthor: eventList[index]['Author'],
           eventName: eventList[index]['Title'].toString(),
-          eventStartDate:
-              DateTime.parse(eventList[index]['StartDate'].toString()),
-          eventEndDate: DateTime.parse(eventList[index]['EndDate'].toString()),
-          eventDescription: eventList[index]['Description'].toString(),
+          eventStartDate: DateTime.parse(eventList[index]['StartDate']),
+          eventEndDate: DateTime.parse(eventList[index]['EndDate']),
+          eventDescription: eventList[index]['Description'],
           handleDetails: handleDetails,
         );
       },
