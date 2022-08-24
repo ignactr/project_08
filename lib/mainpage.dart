@@ -54,7 +54,7 @@ class MainPage extends StatelessWidget {
   final enterPage;
   MainPage(this.enterPage);
 
-  final List<Map<String, String>> eventList = [
+  final List<Map> eventList = [
     {
       'Author': 'ignactr',
       'Title': 'Lorem Ipsum',
@@ -122,6 +122,11 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    eventList.sort((m1, m2) {
+      var r = m1["StartDate"].compareTo(m2["StartDate"]);
+      if (r != 0) return r;
+      return m1["EndDate"].compareTo(m2["StartDate"]);
+    });
     return ListView.builder(
       padding: const EdgeInsets.all(8.0),
       itemExtent: 106.0,
@@ -130,11 +135,10 @@ class MainPage extends StatelessWidget {
         final item = eventList[index];
 
         return CustomListItem(
-          eventName: eventList[index]['Title'].toString(),
-          eventStartDate:
-              DateTime.parse(eventList[index]['StartDate'].toString()),
-          eventEndDate: DateTime.parse(eventList[index]['EndDate'].toString()),
-          eventDescription: eventList[index]['Description'].toString(),
+          eventName: eventList[index]['Title'],
+          eventStartDate: DateTime.parse(eventList[index]['StartDate']),
+          eventEndDate: DateTime.parse(eventList[index]['EndDate']),
+          eventDescription: eventList[index]['Description'],
         );
       },
     );
