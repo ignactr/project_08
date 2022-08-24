@@ -41,7 +41,8 @@ class CustomListItem extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(0, 1, 0, 1),
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.lightBlue),
+        color: Colors.teal[100],
+        border: Border.all(color: Colors.teal.shade100),
         borderRadius: BorderRadius.circular(10),
       ),
     );
@@ -63,27 +64,27 @@ class MainPage extends StatelessWidget {
       'Image': 'images/grafika.png'
     },
     {
-      'Title': 'Lorem Ipsum',
-      'StartDate': '2022-09-20',
-      'EndDate': '2022-09-23',
+      'Title': 'Kobiety Wschodu FUTURE IS NOW',
+      'StartDate': '2022-08-28',
+      'EndDate': '2022-08-29',
       'Description':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+          'w przestrzeni Opery i Filharmonii Podlaskiej odbędzie się wyjątkowe wydarzenie - widowisko muzyczne - koncert pieśni ukraińskich w elektronicznych aranżacjach Miss God z użyciem harfy laserowej - w efekcie powstaje gra światłem.',
       'Image': 'images/grafika.png'
     },
     {
-      'Title': 'Lorem Ipsum',
-      'StartDate': '2022-09-20',
-      'EndDate': '2022-09-23',
+      'Title': 'Konkurs - "Sposoby widzenia"',
+      'StartDate': '2022-06-27',
+      'EndDate': '2022-09-22',
       'Description':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+          'Białostocki Ośrodek Kultury ogłasza XII edycję Konkursu Fotograficznego Ogólnopolskiego Przeglądu Fotografii Współczesnej "Sposoby widzenia"!',
       'Image': 'images/grafika.png'
     },
     {
-      'Title': 'Wigilia Charytatywna',
-      'StartDate': '2022-12-24',
-      'EndDate': '2022-12-24',
+      'Title': 'Wystawa Magdaleny Talmon',
+      'StartDate': '2022-07-07',
+      'EndDate': '2022-08-31',
       'Description':
-          'Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!',
+          '"Kobiety" – ten cykl obrazów zaprezentuje w Domu Kultury „Śródmieście” w Białymstoku Magdalena Talmon. Wernisaż wystawy malarstwa odbędzie się w czwartek (7.07).',
       'Image': 'images/wigilia.png'
     },
     {
@@ -95,19 +96,19 @@ class MainPage extends StatelessWidget {
       'Image': 'images/wigilia.png'
     },
     {
-      'Title': 'Wigilia Charytatywna',
-      'StartDate': '2022-12-24 15:30',
-      'EndDate': '2022-12-24 20:00',
+      'Title': 'Spektakl "Hetmański bal"',
+      'StartDate': '2022-08-28',
+      'EndDate': '2022-08-31',
       'Description':
-          'Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!',
+          'Hetmański Bal to spektakl, w którym grupa Spider Demon Massacre pragnie wyprawić urodziny jednemu z najbardziej zasłużonych mieszkańców Białegostoku – Janowi Klemensowi Branickiemu. Przy stole zasiądą najdostojniejsi goście oraz przyjaciele, a całą uroczystość poprowadzi nadworny aktor, gawędziarz. W tym spotkaniu przyjrzymy się historii naszego miasta z różnych stron. Nie boimy się zajrzeć w jasne i ciemne zakamarki naszego kulturowego dziedzictwa. W każdym elemencie historii tkwi potencjał, który odpowiednio wykorzystany może uczyć i doprowadzić do czegoś ważnego.',
       'Image': 'images/wigilia.png'
     },
     {
-      'Title': 'Wigilia Charytatywna',
-      'StartDate': '2022-12-24 15:30',
+      'Title': 'Joga w Parku w Białymstoku',
+      'StartDate': '2022-06-29',
       'EndDate': '2022-12-24 20:00',
       'Description':
-          'Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!',
+          'Fundacja Art of Living Polska wraz ze studiem Joga Ruch Oddech zapraszają mieszkańców Białegostoku i okolic na otwarte sesje jogi w parku od 29 czerwca do 31 sierpnia, w każdą środę w godz. 18.00- 19.00.',
       'Image': 'images/wigilia.png'
     },
   ];

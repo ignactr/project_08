@@ -61,6 +61,7 @@ class PassInput extends StatelessWidget {
     return Column(children: <Widget>[
       Text('hasło:',style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
+        obscureText: true,
         controller: passController,
         validator: (value) {
           if (value == null || value.isEmpty) {
