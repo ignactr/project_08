@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 const registerInfo = SnackBar(
@@ -17,42 +16,65 @@ class CustomListItem extends StatelessWidget {
 
   const CustomListItem({
     Key? key,
+    required this.eventAuthor,
     required this.eventName,
     required this.eventStartDate,
     required this.eventEndDate,
     required this.eventDescription,
+    required this.handleDetails,
   }) : super(key: key);
 
+  final String eventAuthor;
   final String eventName;
   final DateTime eventStartDate;
   final DateTime eventEndDate;
   final String eventDescription;
+  final handleDetails;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Text(eventName,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-        Text('Rozpoczęcie: ${eventStartDate}', style: TextStyle(fontSize: 18)),
-        Text('Zakończenie: ${eventEndDate}', style: TextStyle(fontSize: 18)),
-        Text(cut()),
-      ]),
-      margin: EdgeInsets.fromLTRB(0, 1, 0, 1),
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: Colors.teal[100],
-        border: Border.all(color: Colors.teal.shade100),
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
+    return InkWell(
+        onTap: () {
+          handleDetails(eventAuthor, eventName, eventStartDate, eventEndDate, eventDescription);
+        },
+        child: Container(
+          child: Column(children: [
+            Text(eventName,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+            Text('Rozpoczęcie: ${eventStartDate}',
+                style: TextStyle(fontSize: 18)),
+            Text('Zakończenie: ${eventEndDate}',
+                style: TextStyle(fontSize: 18)),
+            Text(cut()),
+          ]),
+          margin: EdgeInsets.fromLTRB(0, 1, 0, 1),
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            color: Colors.teal[100],
+            border: Border.all(color: Colors.teal.shade100),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ));
   }
 }
 
-class MainPage extends StatelessWidget {
-  //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
+class MainPage extends StatefulWidget {
   final enterPage;
   MainPage(this.enterPage);
+  @override
+  State<StatefulWidget> createState(){
+    return _MainPageState(enterPage);
+  }
+}
+
+class _MainPageState extends State<MainPage> {
+  //final DateFormat datePattern = DateFormat('yyyy-MM-dd hh:mm');
+  final enterPage;
+  _MainPageState(this.enterPage);
+
+  void handleDetails(author, name, startDate, endDate, description){
+    print(author);
+  }
 
   final List<Map<String, String>> eventList = [
     {
@@ -130,11 +152,13 @@ class MainPage extends StatelessWidget {
         final item = eventList[index];
 
         return CustomListItem(
+          eventAuthor: eventList[index]['Author'].toString(),
           eventName: eventList[index]['Title'].toString(),
           eventStartDate:
               DateTime.parse(eventList[index]['StartDate'].toString()),
           eventEndDate: DateTime.parse(eventList[index]['EndDate'].toString()),
           eventDescription: eventList[index]['Description'].toString(),
+          handleDetails: handleDetails,
         );
       },
     );
