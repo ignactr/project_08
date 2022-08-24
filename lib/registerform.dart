@@ -56,8 +56,18 @@ class MailInput extends StatelessWidget {
 
 class LoginInput extends StatelessWidget {
   final loginController;
+  final users;
 
-  LoginInput(this.loginController);
+  LoginInput(this.loginController, this.users);
+
+  bool _isLoginUnoccupied(givenLogin){
+    for(var i = 0; i < users.length; i++){
+      if(users[i]['userLogin'] == givenLogin){
+        return false;
+      }
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +78,8 @@ class LoginInput extends StatelessWidget {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Dane nie mogą być puste';
+          }else if(!_isLoginUnoccupied(value)){
+            return 'Nazwa użytkownika zajęta!';
           }
         },
       ),
@@ -120,7 +132,7 @@ class RegisterFormState extends State<RegisterForm> {
       child: Column(
         children: <Widget>[
           MailInput(mailController, users),
-          LoginInput(loginController),
+          LoginInput(loginController, users),
           PassInput(passController),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             ElevatedButton(
