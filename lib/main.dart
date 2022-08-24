@@ -75,6 +75,7 @@ class _AppState extends State<App> {
               color: Colors.black,
               child: _pageNumber == 1 ? Text('Zarejestruj się', style: TextStyle(color: Colors.white, fontSize: 30))
                : _pageNumber == 2 ? Text('Zaloguj się', style: TextStyle(color: Colors.white, fontSize: 30))
+               : _pageNumber == 3 ? Text('Szczegóły wydarzenia', style: TextStyle(color: Colors.white, fontSize: 30))
                : loggedLogin==null ? Row(
                 children: [
                   ElevatedButton(
@@ -109,7 +110,7 @@ class _AppState extends State<App> {
             ),
           )
         ),
-        body: _pageNumber == 0
+        body: (_pageNumber == 0 || _pageNumber == 3)
             ? MainPage(enterPage,loggedLogin)
             : _pageNumber == 1
             ? RegisterForm(enterPage, handleRegister, users)

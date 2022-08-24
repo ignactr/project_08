@@ -98,6 +98,7 @@ class _MainPageState extends State<MainPage> {
       startDateToShow = startDate;
       endDateToShow = endDate;
       descriptionToShow = description;
+      enterPage(3);
     });
   }
   void handleGoBack(){
@@ -107,6 +108,7 @@ class _MainPageState extends State<MainPage> {
       startDateToShow = null;
       endDateToShow = null;
       descriptionToShow = null;
+      enterPage(0);
     });
   }
   List<Map> eventList = [
