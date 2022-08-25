@@ -63,10 +63,10 @@ class MainPage extends StatefulWidget {
   final enterPage;
   List<Map> eventList;
   String? loggedLogin;
-  MainPage(this.enterPage, this.loggedLogin,this.eventList);
+  MainPage(this.enterPage, this.loggedLogin, this.eventList);
   @override
   State<StatefulWidget> createState() {
-    return _MainPageState(enterPage, loggedLogin,eventList);
+    return _MainPageState(enterPage, loggedLogin, eventList);
   }
 }
 

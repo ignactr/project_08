@@ -22,9 +22,9 @@ class MailInput extends StatelessWidget {
 
   MailInput(this.mailController, this.users);
 
-  bool _isMailUnoccupied(givenMail){
-    for(var i = 0; i < users.length; i++){
-      if(users[i]['userMail'] == givenMail){
+  bool _isMailUnoccupied(givenMail) {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i]['userMail'] == givenMail) {
         return false;
       }
     }
@@ -34,7 +34,7 @@ class MailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('email:',style: TextStyle(color: Colors.black, fontSize: 20)),
+      Text('email:', style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         controller: mailController,
         validator: (value) {
@@ -44,7 +44,7 @@ class MailInput extends StatelessWidget {
                   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
               .hasMatch(value)) {
             return 'Wprowadź poprawny adres E-mail';
-          } else if(_isMailUnoccupied(value) == false){
+          } else if (_isMailUnoccupied(value) == false) {
             return 'Podany email jest już zajęty';
           }
           ;
@@ -60,9 +60,9 @@ class LoginInput extends StatelessWidget {
 
   LoginInput(this.loginController, this.users);
 
-  bool _isLoginUnoccupied(givenLogin){
-    for(var i = 0; i < users.length; i++){
-      if(users[i]['userLogin'] == givenLogin){
+  bool _isLoginUnoccupied(givenLogin) {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i]['userLogin'] == givenLogin) {
         return false;
       }
     }
@@ -72,13 +72,13 @@ class LoginInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('login:',style: TextStyle(color: Colors.black, fontSize: 20)),
+      Text('login:', style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         controller: loginController,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Dane nie mogą być puste';
-          }else if(!_isLoginUnoccupied(value)){
+          } else if (!_isLoginUnoccupied(value)) {
             return 'Nazwa użytkownika zajęta!';
           }
         },
@@ -95,7 +95,7 @@ class PassInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('hasło:',style: TextStyle(color: Colors.black, fontSize: 20)),
+      Text('hasło:', style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         obscureText: true,
         controller: passController,
@@ -140,21 +140,22 @@ class RegisterFormState extends State<RegisterForm> {
                   enterPage(0);
                 },
                 child: Text('Anuluj'),
-                style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                style: ElevatedButton.styleFrom(primary: Colors.grey)),
             ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  var pass = utf8.encode(passController.text);
-                  var passHash = sha1.convert(pass);
-                  handleRegister(mailController.text, loginController.text, passHash.toString());
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Dodano użytkownika')),
-                  );
-                  enterPage(0);
-                }
-              },
-              child: Text('Rejestruj'),
-              style: ElevatedButton.styleFrom(primary: Colors.grey )),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    var pass = utf8.encode(passController.text);
+                    var passHash = sha1.convert(pass);
+                    handleRegister(mailController.text, loginController.text,
+                        passHash.toString());
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Dodano użytkownika')),
+                    );
+                    enterPage(0);
+                  }
+                },
+                child: Text('Rejestruj'),
+                style: ElevatedButton.styleFrom(primary: Colors.grey)),
           ]),
         ],
       ),

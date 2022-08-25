@@ -39,6 +39,26 @@ class _AppState extends State<App> {
     });
   }
 
+  void handleAddEvent(
+    String author,
+    String title,
+    String startDate,
+    String endDate,
+    String description,
+    String image,
+  ) {
+    setState(() {
+      eventList.add({
+        'Author': author,
+        'Title': title,
+        'StartDate': startDate,
+        'EndDate': endDate,
+        'Description': description,
+        'Image': image,
+      });
+    });
+  }
+
   var users = [
     {
       'userMail': 'ignacy.trocki@wp.pl',
@@ -218,6 +238,6 @@ class _AppState extends State<App> {
                     ? RegisterForm(enterPage, handleRegister, users)
                     : _pageNumber == 2
                         ? LoginForm(enterPage, handleLogin, users)
-                        : NewEventForm(enterPage)));
+                        : NewEventForm(enterPage, handleAddEvent, eventList)));
   }
 }
