@@ -35,6 +35,7 @@ class _AppState extends State<App> {
   void handleRegister(String mail, String login, String password) {
     setState(() {
       users.add({'userMail': mail, 'userLogin': login, 'userPass': password});
+      loggedLogin = login;
     });
   }
 
