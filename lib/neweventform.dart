@@ -145,10 +145,33 @@ class EndDateInput extends StatelessWidget {
   }
 }
 
+class ImageInput extends StatelessWidget {
+  final imageController;
+  final eventList;
+
+  ImageInput(this.imageController, this.eventList);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: <Widget>[
+      Text('Grafika:', style: TextStyle(color: Colors.black, fontSize: 20)),
+      TextFormField(
+        controller: imageController,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Dane nie mogą być puste';
+          }
+        },
+      ),
+    ]);
+  }
+}
+
 class NewEventFormState extends State<NewEventForm> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
+  final imageController = TextEditingController();
   final enterPage;
   final handleAddEvent;
   final eventList;
@@ -157,6 +180,7 @@ class NewEventFormState extends State<NewEventForm> {
   var endDateController;
 
   NewEventFormState(this.enterPage, this.handleAddEvent, this.eventList);
+  String? loggedLogin;
 
   void handleStartDate(value) {
     startDateController = value;
@@ -175,6 +199,7 @@ class NewEventFormState extends State<NewEventForm> {
           DescriptionInput(descriptionController, eventList),
           StartDateInput(handleStartDate, eventList),
           EndDateInput(handleEndDate, eventList),
+          ImageInput(imageController, eventList),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             ElevatedButton(
                 onPressed: () {
@@ -191,16 +216,21 @@ class NewEventFormState extends State<NewEventForm> {
                 //   enterPage(0);
                 // },
                 onPressed: () {
+                  print(loggedLogin);
                   print(titleController.text);
                   print(descriptionController.text);
                   print(startDateController.toString());
                   print(endDateController.toString());
+                  print(imageController.text);
+
                   if (_formKey.currentState!.validate()) {
                     handleAddEvent(
+                        "loggedLogin",
                         titleController.text,
-                        descriptionController.text,
                         startDateController.toString(),
-                        endDateController.toString());
+                        endDateController.toString(),
+                        descriptionController.text,
+                        imageController.text);
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Dodano Wydarzenie')),
