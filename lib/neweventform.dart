@@ -19,8 +19,8 @@ class NewEventFormState extends State<NewEventForm> {
 
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
-  var startDateController = TextEditingController();
-  var endDateController = TextEditingController();
+  var startDateController;
+  var endDateController;
 
   NewEventFormState(this.enterPage);
 
@@ -52,6 +52,8 @@ class NewEventFormState extends State<NewEventForm> {
                 onPressed: () {
                   print(titleController.text);
                   print(descriptionController.text);
+                  print(startDateController);
+                  print(endDateController);
                   enterPage(0);
                 },
                 child: Text('Dodaj Wydarzenie'),
@@ -129,11 +131,11 @@ class StartDateInput extends StatelessWidget {
               initialTime:
                   TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
             );
-            print(DateTimeField.combine(date, time).toString());
+            handleStartDate(DateTimeField.combine(date, time));
             return DateTimeField.combine(date, time);
           } else {
-            print(currentValue.toString());
             handleStartDate(currentValue.toString());
+            return currentValue;
           }
         },
       ),
@@ -164,7 +166,7 @@ class EndDateInput extends StatelessWidget {
               initialTime:
                   TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
             );
-            print(DateTimeField.combine(date, time).toString());
+            handleEndDate(DateTimeField.combine(date, time));
             return DateTimeField.combine(date, time);
           } else {
             handleEndDate(currentValue.toString());
