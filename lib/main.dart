@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'registerform.dart';
 import 'mainpage.dart';
 import 'loginform.dart';
+import 'neweventform.dart';
 
 void main() => runApp(App());
 
@@ -125,9 +126,7 @@ class _AppState extends State<App> {
                                           SizedBox(width: 10),
                                           ElevatedButton(
                                               onPressed: () {
-                                                // setState(() {
-                                                //   loggedLogin = null;
-                                                // });
+                                                enterPage(4);
                                               },
                                               child: Text('Dodaj Wydarzenie',
                                                   style: TextStyle(
@@ -141,7 +140,8 @@ class _AppState extends State<App> {
               ? MainPage(enterPage, loggedLogin)
               : _pageNumber == 1
                   ? RegisterForm(enterPage, handleRegister, users)
-                  : LoginForm(enterPage, handleLogin, users)),
+                  : _pageNumber == 2 ? LoginForm(enterPage, handleLogin, users)
+                  : NewEventForm(enterPage))
     );
   }
 }
