@@ -114,7 +114,7 @@ class StartDateInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('Rozpoczęcie'),
+      Text('Rozpoczęcie:',style: TextStyle(color: Colors.black, fontSize: 20)),
       DateTimeField(
         format: format,
         onShowPicker: (context, currentValue) async {
@@ -129,6 +129,7 @@ class StartDateInput extends StatelessWidget {
               initialTime:
                   TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
             );
+            print(DateTimeField.combine(date, time).toString());
             return DateTimeField.combine(date, time);
           } else {
             print(currentValue.toString());
@@ -148,7 +149,7 @@ class EndDateInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('Zakończenie'),
+      Text('Zakończenie:',style: TextStyle(color: Colors.black, fontSize: 20)),
       DateTimeField(
         format: format,
         onShowPicker: (context, currentValue) async {
@@ -163,10 +164,11 @@ class EndDateInput extends StatelessWidget {
               initialTime:
                   TimeOfDay.fromDateTime(currentValue ?? DateTime.now()),
             );
+            print(DateTimeField.combine(date, time).toString());
             return DateTimeField.combine(date, time);
           } else {
-            print(currentValue.toString());
             handleEndDate(currentValue.toString());
+            return currentValue;
           }
         },
       ),
