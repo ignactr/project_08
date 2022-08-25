@@ -65,33 +65,33 @@ class MainPage extends StatefulWidget {
   String? loggedLogin;
   MainPage(this.enterPage, this.loggedLogin);
   @override
-  State<StatefulWidget> createState(){
+  State<StatefulWidget> createState() {
     return _MainPageState(enterPage, loggedLogin);
   }
 }
+
 class _MainPageState extends State<MainPage> {
-  
   final enterPage;
   String? loggedLogin;
 
   _MainPageState(this.enterPage, this.loggedLogin);
 
-  String? authorToShow; 
-  String? nameToShow; 
-  DateTime? startDateToShow;  
-  DateTime? endDateToShow; 
-  String? descriptionToShow; 
+  String? authorToShow;
+  String? nameToShow;
+  DateTime? startDateToShow;
+  DateTime? endDateToShow;
+  String? descriptionToShow;
 
-  void handleDelete(eventName){
-    for(var i = 0; i < eventList.length; i++){
-      if(eventList[i]['Title'] == eventName){
+  void handleDelete(eventName) {
+    for (var i = 0; i < eventList.length; i++) {
+      if (eventList[i]['Title'] == eventName) {
         eventList.removeAt(i);
         handleGoBack();
       }
     }
   }
 
-  void handleDetails(author, name, startDate, endDate, description){
+  void handleDetails(author, name, startDate, endDate, description) {
     setState(() {
       authorToShow = author;
       nameToShow = name;
@@ -101,7 +101,8 @@ class _MainPageState extends State<MainPage> {
       enterPage(3);
     });
   }
-  void handleGoBack(){
+
+  void handleGoBack() {
     setState(() {
       authorToShow = null;
       nameToShow = null;
@@ -111,7 +112,17 @@ class _MainPageState extends State<MainPage> {
       enterPage(0);
     });
   }
+
   List<Map> eventList = [
+    {
+      'Author': 'ignactr',
+      'Title': 'Lorem Ipsum',
+      'StartDate': '2022-09-20',
+      'EndDate': '2022-09-23',
+      'Description':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
+      'Image': 'images/grafika.png'
+    },
     {
       'Author': 'ignactr',
       'Title': 'Lorem Ipsum',
@@ -184,22 +195,25 @@ class _MainPageState extends State<MainPage> {
       if (r != 0) return r;
       return m1["EndDate"].compareTo(m2["StartDate"]);
     });
-    return authorToShow != null ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow, descriptionToShow, handleGoBack, loggedLogin, handleDelete) : ListView.builder(
-      padding: const EdgeInsets.all(8.0),
-      itemExtent: 106.0,
-      itemCount: eventList.length,
-      itemBuilder: (context, index) {
-        final item = eventList[index];
+    return authorToShow != null
+        ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow,
+            descriptionToShow, handleGoBack, loggedLogin, handleDelete)
+        : ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            itemExtent: 106.0,
+            itemCount: eventList.length,
+            itemBuilder: (context, index) {
+              final item = eventList[index];
 
-        return CustomListItem(
-          eventAuthor: eventList[index]['Author'],
-          eventName: eventList[index]['Title'].toString(),
-          eventStartDate: DateTime.parse(eventList[index]['StartDate']),
-          eventEndDate: DateTime.parse(eventList[index]['EndDate']),
-          eventDescription: eventList[index]['Description'],
-          handleDetails: handleDetails,
-        );
-      },
-    );
+              return CustomListItem(
+                eventAuthor: eventList[index]['Author'],
+                eventName: eventList[index]['Title'].toString(),
+                eventStartDate: DateTime.parse(eventList[index]['StartDate']),
+                eventEndDate: DateTime.parse(eventList[index]['EndDate']),
+                eventDescription: eventList[index]['Description'],
+                handleDetails: handleDetails,
+              );
+            },
+          );
   }
 }
