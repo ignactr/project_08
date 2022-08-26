@@ -74,7 +74,6 @@ class _MainPageState extends State<MainPage> {
   final enterPage;
   List<Map> eventList;
   String? loggedLogin;
-  List<Map> eventList;
 
   _MainPageState(this.enterPage, this.loggedLogin, this.eventList);
 
