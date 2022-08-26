@@ -74,6 +74,7 @@ class _MainPageState extends State<MainPage> {
   final enterPage;
   List<Map> eventList;
   String? loggedLogin;
+  List<Map> eventList;
 
   _MainPageState(this.enterPage, this.loggedLogin, this.eventList);
 
@@ -113,7 +114,6 @@ class _MainPageState extends State<MainPage> {
       enterPage(0);
     });
   }
-
   @override
   Widget build(BuildContext context) {
     eventList.sort((m1, m2) {
