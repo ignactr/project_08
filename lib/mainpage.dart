@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'showdetails.dart';
 
@@ -73,6 +72,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final enterPage;
+  List<Map> eventList;
   String? loggedLogin;
   List<Map> eventList;
 
