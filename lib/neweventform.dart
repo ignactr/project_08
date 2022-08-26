@@ -6,12 +6,13 @@ class NewEventForm extends StatefulWidget {
   final enterPage;
   final handleAddEvent;
   final eventList;
+  final loggedLogin;
 
-  NewEventForm(this.enterPage, this.handleAddEvent, this.eventList);
+  NewEventForm(this.enterPage, this.handleAddEvent, this.eventList, this.loggedLogin);
 
   @override
   NewEventFormState createState() {
-    return NewEventFormState(enterPage, handleAddEvent, eventList);
+    return NewEventFormState(enterPage, handleAddEvent, eventList, loggedLogin);
   }
 }
 
@@ -175,12 +176,12 @@ class NewEventFormState extends State<NewEventForm> {
   final enterPage;
   final handleAddEvent;
   final eventList;
+  final loggedLogin;
 
   var startDateController;
   var endDateController;
 
-  NewEventFormState(this.enterPage, this.handleAddEvent, this.eventList);
-  String? loggedLogin;
+  NewEventFormState(this.enterPage, this.handleAddEvent, this.eventList, this.loggedLogin);
 
   void handleStartDate(value) {
     startDateController = value;
@@ -216,16 +217,9 @@ class NewEventFormState extends State<NewEventForm> {
                 //   enterPage(0);
                 // },
                 onPressed: () {
-                  print(loggedLogin);
-                  print(titleController.text);
-                  print(descriptionController.text);
-                  print(startDateController.toString());
-                  print(endDateController.toString());
-                  print(imageController.text);
-
                   if (_formKey.currentState!.validate()) {
                     handleAddEvent(
-                        "loggedLogin",
+                        loggedLogin,
                         titleController.text,
                         startDateController.toString(),
                         endDateController.toString(),

@@ -245,6 +245,6 @@ class _AppState extends State<App> {
                     ? RegisterForm(enterPage, handleRegister, users)
                     : _pageNumber == 2
                         ? LoginForm(enterPage, handleLogin, users)
-                        : NewEventForm(enterPage, handleAddEvent, eventList)));
+                        : NewEventForm(enterPage, handleAddEvent, eventList, loggedLogin)));
   }
 }
