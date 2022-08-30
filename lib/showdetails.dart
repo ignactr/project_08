@@ -10,7 +10,6 @@ class ShowDetails extends StatelessWidget {
   final handleGoBack;
   final loggedLogin;
   final handleDelete;
-  
 
   ShowDetails(this.author, this.name, this.startDate, this.endDate,
       this.description, this.image, this.handleGoBack, this.loggedLogin, this.handleDelete);

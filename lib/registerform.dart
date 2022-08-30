@@ -80,6 +80,8 @@ class LoginInput extends StatelessWidget {
             return 'Dane nie mogą być puste';
           } else if (!_isLoginUnoccupied(value)) {
             return 'Nazwa użytkownika zajęta!';
+          } else if(value.length>20){
+             return 'Długość loginu to maksymalnie 20 znaków';
           }
         },
       ),

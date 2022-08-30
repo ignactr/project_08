@@ -69,6 +69,9 @@ class DescriptionInput extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return 'Dane nie mogą być puste';
           }
+          if (value.length > 565) {
+            return 'Dane nie mogą być puste';
+          }
         },
       ),
     ]);
