@@ -158,7 +158,7 @@ class ImageInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('Grafika:', style: TextStyle(color: Colors.black, fontSize: 20)),
+      Text('Adres Grafiki:', style: TextStyle(color: Colors.black, fontSize: 20)),
       TextFormField(
         controller: imageController,
         validator: (value) {
@@ -241,4 +241,3 @@ class NewEventFormState extends State<NewEventForm> {
         ]));
   }
 }
-//------------------------Input Fields-------------------------//

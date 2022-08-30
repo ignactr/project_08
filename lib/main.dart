@@ -91,7 +91,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-09-23',
       'Description':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-      'Image': 'images/grafika.png'
+      'Image': 'https://kulturaodnowa.pl/wp-content/uploads/2021/03/Lorem-Ipsum-alternatives.png'
     },
     {
       'Author': 'FekalnyYeti',
@@ -100,7 +100,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-08-29',
       'Description':
           'w przestrzeni Opery i Filharmonii Podlaskiej odbędzie się wyjątkowe wydarzenie - widowisko muzyczne - koncert pieśni ukraińskich w elektronicznych aranżacjach Miss God z użyciem harfy laserowej - w efekcie powstaje gra światłem.',
-      'Image': 'images/grafika.png'
+      'Image': 'https://muzeum1939.pl/sites/default/files/styles/870/public/galeria/2019/09/a53e0c8e776da69b9f3bfbb3ae559ad710991.jpg?itok=tMmfCbeb'
     },
     {
       'Author': 'Arczin',
@@ -109,7 +109,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-09-22',
       'Description':
           'Białostocki Ośrodek Kultury ogłasza XII edycję Konkursu Fotograficznego Ogólnopolskiego Przeglądu Fotografii Współczesnej "Sposoby widzenia"!',
-      'Image': 'images/grafika.png'
+      'Image': 'https://ipn.gov.pl/dokumenty/zalaczniki/1/1-50033.jpg'
     },
     {
       'Author': 'ignactr',
@@ -118,7 +118,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-08-31',
       'Description':
           '"Kobiety" – ten cykl obrazów zaprezentuje w Domu Kultury „Śródmieście” w Białymstoku Magdalena Talmon. Wernisaż wystawy malarstwa odbędzie się w czwartek (7.07).',
-      'Image': 'images/wigilia.png'
+      'Image': 'https://bi.im-g.pl/im/7d/4b/16/z23377021K,Wystawa--Twoj-Vincent-van-Gogh--Obrazy-z-filmu--w-.jpg'
     },
     {
       'Author': 'Arczin',
@@ -127,7 +127,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-12-24 20:00',
       'Description':
           'Świąteczna wigilia dla potrzebujących, bezdomnych i samotnych. Wstęp całkowicie darmowy!',
-      'Image': 'images/wigilia.png'
+      'Image': 'https://pannellier.pl/20609-large_default/choinka-sztuczna-drzewko-swiateczne-stroik.jpg'
     },
     {
       'Author': 'Arczin',
@@ -135,8 +135,8 @@ class _AppState extends State<App> {
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-31',
       'Description':
-          'Hetmański Bal to spektakl, w którym grupa Spider Demon Massacre pragnie wyprawić urodziny jednemu z najbardziej zasłużonych mieszkańców Białegostoku – Janowi Klemensowi Branickiemu. Przy stole zasiądą najdostojniejsi goście oraz przyjaciele, a całą uroczystość poprowadzi nadworny aktor, gawędziarz. W tym spotkaniu przyjrzymy się historii naszego miasta z różnych stron. Nie boimy się zajrzeć w jasne i ciemne zakamarki naszego kulturowego dziedzictwa.',
-      'Image': 'images/wigilia.png'
+          'Hetmański Bal to spektakl, w którym grupa SDM pragnie wyprawić urodziny jednemu z najbardziej zasłużonych mieszkańców Białegostoku – Janowi Klemensowi Branickiemu. Przy stole zasiądą najdostojniejsi goście oraz przyjaciele, a całą uroczystość poprowadzi nadworny aktor, gawędziarz. W tym spotkaniu przyjrzymy się historii naszego miasta z różnych stron. Nie boimy się zajrzeć w jasne i ciemne zakamarki naszego kulturowego dziedzictwa.',
+      'Image': 'https://dzieje.pl/sites/default/files/styles/open_article_750x0_/public/201704/czarniecki_stefan.jpg?itok=QG5MHgmO'
     },
     {
       'Author': 'ignactr',
@@ -145,7 +145,7 @@ class _AppState extends State<App> {
       'EndDate': '2022-12-24 20:00',
       'Description':
           'Fundacja Art of Living Polska wraz ze studiem Joga Ruch Oddech zapraszają mieszkańców Białegostoku i okolic na otwarte sesje jogi w parku od 29 czerwca do 31 sierpnia, w każdą środę w godz. 18.00- 19.00.',
-      'Image': 'images/wigilia.png'
+      'Image': 'https://gfx.stylzycia.radiozet.pl/var/radiozetstylzyci/storage/images/uroda/pielegnacja/hatha-joga-na-czym-polega-jakie-sa-jej-zalety-i-jak-zaczac-31313/9290118-1-pol-PL/Hatha-joga-na-czym-polega-jakie-sa-jej-zalety-i-jak-zaczac_size-360x270.jpg'
     },
   ];
 

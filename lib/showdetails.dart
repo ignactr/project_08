@@ -6,12 +6,14 @@ class ShowDetails extends StatelessWidget {
   final startDate;
   final endDate;
   final description;
+  final image;
   final handleGoBack;
   final loggedLogin;
   final handleDelete;
+  
 
   ShowDetails(this.author, this.name, this.startDate, this.endDate,
-      this.description, this.handleGoBack, this.loggedLogin, this.handleDelete);
+      this.description, this.image, this.handleGoBack, this.loggedLogin, this.handleDelete);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ShowDetails extends StatelessWidget {
                 Row(children: [
                   Text(name,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w600)),
+                      style: TextStyle(color: Colors.black, fontSize: 28, fontWeight: FontWeight.w600)),
                   Column(
                     children: [
                       SizedBox(
@@ -34,7 +36,7 @@ class ShowDetails extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.network(
-                          'https://picsum.photos/250?image=9',
+                          image,
                           width: 80,
                         ),
                       )

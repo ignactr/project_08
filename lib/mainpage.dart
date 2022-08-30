@@ -21,6 +21,7 @@ class CustomListItem extends StatelessWidget {
     required this.eventStartDate,
     required this.eventEndDate,
     required this.eventDescription,
+    required this.eventImage,
     required this.handleDetails,
   }) : super(key: key);
 
@@ -29,6 +30,7 @@ class CustomListItem extends StatelessWidget {
   final DateTime eventStartDate;
   final DateTime eventEndDate;
   final String eventDescription;
+  final String eventImage;
   final handleDetails;
 
   @override
@@ -36,7 +38,7 @@ class CustomListItem extends StatelessWidget {
     return InkWell(
         onTap: () {
           handleDetails(eventAuthor, eventName, eventStartDate, eventEndDate,
-              eventDescription);
+              eventDescription, eventImage);
         },
         child: Container(
           child: Column(children: [
@@ -82,6 +84,7 @@ class _MainPageState extends State<MainPage> {
   DateTime? startDateToShow;
   DateTime? endDateToShow;
   String? descriptionToShow;
+  String? imageToShow;
 
   void handleDelete(eventName) {
     for (var i = 0; i < eventList.length; i++) {
@@ -92,13 +95,14 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  void handleDetails(author, name, startDate, endDate, description) {
+  void handleDetails(author, name, startDate, endDate, description, image) {
     setState(() {
       authorToShow = author;
       nameToShow = name;
       startDateToShow = startDate;
       endDateToShow = endDate;
       descriptionToShow = description;
+      imageToShow = image;
       enterPage(3);
     });
   }
@@ -110,6 +114,7 @@ class _MainPageState extends State<MainPage> {
       startDateToShow = null;
       endDateToShow = null;
       descriptionToShow = null;
+      imageToShow = null;
       enterPage(0);
     });
   }
@@ -122,7 +127,7 @@ class _MainPageState extends State<MainPage> {
     });
     return authorToShow != null
         ? ShowDetails(authorToShow, nameToShow, startDateToShow, endDateToShow,
-            descriptionToShow, handleGoBack, loggedLogin, handleDelete)
+            descriptionToShow, imageToShow, handleGoBack, loggedLogin, handleDelete)
         : ListView.builder(
             padding: const EdgeInsets.all(8.0),
             itemExtent: 106.0,
@@ -136,6 +141,7 @@ class _MainPageState extends State<MainPage> {
                 eventStartDate: DateTime.parse(eventList[index]['StartDate']),
                 eventEndDate: DateTime.parse(eventList[index]['EndDate']),
                 eventDescription: eventList[index]['Description'],
+                eventImage: eventList[index]['Image'],
                 handleDetails: handleDetails,
               );
             },
