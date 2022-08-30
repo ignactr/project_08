@@ -22,21 +22,67 @@ class ShowDetails extends StatelessWidget {
             Positioned(
                 child: Column(
               children: [
-                Text('Nazwa: $name',
+                Row(children: [
+                  Text(name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w600)),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.network(
+                          'https://picsum.photos/250?image=9',
+                          width: 80,
+                        ),
+                      )
+                    ],
+                  ),
+                ], mainAxisAlignment: MainAxisAlignment.spaceEvenly),
+                Text('Opis:',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 25)),
-                Text('Opis: $description',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold)),
+                Text(description,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 20)),
-                Text('Rozpoczęcie: $startDate',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 25)),
-                Text('Zakończenie: $endDate',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 25)),
-                Text('Autor: $author',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 25)),
+                    style: TextStyle(color: Colors.black, fontSize: 23)),
+                Row(children: [
+                  Text('Rozpoczęcie: ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold)),
+                  Text(startDate.toString().substring(0, 16),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 25)),
+                ], mainAxisAlignment: MainAxisAlignment.center),
+                Row(children: [
+                  Text('Zakończenie: ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold)),
+                  Text(endDate.toString().substring(0, 16),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 25)),
+                ], mainAxisAlignment: MainAxisAlignment.center),
+                Row(children: [
+                  Text('Autor: ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold)),
+                  Text(author,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 25)),
+                ], mainAxisAlignment: MainAxisAlignment.center),
               ],
             )),
             Positioned(
@@ -75,11 +121,11 @@ class ShowDetails extends StatelessWidget {
             )
           ],
         ),
-        margin: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+        margin: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
         decoration: BoxDecoration(
           color: Colors.teal[100],
           border: Border.all(color: Colors.teal.shade100),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
     );

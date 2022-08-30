@@ -41,6 +41,9 @@ class TitleInput extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return 'Dane nie mogą być puste';
           }
+          if (value.length > 20) {
+            return 'Długość tytułu to maksymalnie 18 znaków';
+          }
           if (_doesTitleExist(value) == false) {
             return 'podany email nie istnieje';
           }

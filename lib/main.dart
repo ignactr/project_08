@@ -95,7 +95,7 @@ class _AppState extends State<App> {
     },
     {
       'Author': 'FekalnyYeti',
-      'Title': 'Kobiety Wschodu FUTURE IS NOW',
+      'Title': 'FUTURE IS NOW',
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-29',
       'Description':
@@ -104,7 +104,7 @@ class _AppState extends State<App> {
     },
     {
       'Author': 'Arczin',
-      'Title': 'Konkurs - "Sposoby widzenia"',
+      'Title': '"Sposoby widzenia"',
       'StartDate': '2022-06-27',
       'EndDate': '2022-09-22',
       'Description':
@@ -113,7 +113,7 @@ class _AppState extends State<App> {
     },
     {
       'Author': 'ignactr',
-      'Title': 'Wystawa Magdaleny Talmon',
+      'Title': 'Wystawa Magdaleny T',
       'StartDate': '2022-07-07',
       'EndDate': '2022-08-31',
       'Description':
@@ -131,7 +131,7 @@ class _AppState extends State<App> {
     },
     {
       'Author': 'Arczin',
-      'Title': 'Spektakl "Hetmański bal"',
+      'Title': '"Hetmański bal"',
       'StartDate': '2022-08-28',
       'EndDate': '2022-08-31',
       'Description':
@@ -140,7 +140,7 @@ class _AppState extends State<App> {
     },
     {
       'Author': 'ignactr',
-      'Title': 'Joga w Parku w Białymstoku',
+      'Title': 'Joga w Parku',
       'StartDate': '2022-06-29',
       'EndDate': '2022-12-24 20:00',
       'Description':
