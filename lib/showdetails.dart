@@ -16,7 +16,7 @@ class ShowDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
+    return SizedBox(
       child: Container(
         child: Stack(
           children: <Widget>[
@@ -47,17 +47,17 @@ class ShowDetails extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 26,
-                        fontWeight: FontWeight.bold)),
+                        fontWeight: FontWeight.w800)),
                 Text(description,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 23)),
+                    style: TextStyle(color: Colors.black, fontSize: 21, fontWeight: FontWeight.w500)),
                 Row(children: [
                   Text('Rozpoczęcie: ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.w800)),
                   Text(startDate.toString().substring(0, 16),
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black, fontSize: 25)),
@@ -68,7 +68,7 @@ class ShowDetails extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.w800)),
                   Text(endDate.toString().substring(0, 16),
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black, fontSize: 25)),
@@ -79,7 +79,7 @@ class ShowDetails extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.w800)),
                   Text(author,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.black, fontSize: 25)),

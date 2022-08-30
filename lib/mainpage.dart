@@ -43,12 +43,12 @@ class CustomListItem extends StatelessWidget {
         child: Container(
           child: Column(children: [
             Text(eventName,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            Text('Rozpoczęcie: ${eventStartDate}',
-                style: TextStyle(fontSize: 18)),
-            Text('Zakończenie: ${eventEndDate}',
-                style: TextStyle(fontSize: 18)),
-            Text(cut()),
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 23)),
+            Text('Rozpoczęcie: ${eventStartDate.toString().substring(0, 10)}',
+                style: TextStyle(fontSize: 14)),
+            Text('Zakończenie: ${eventEndDate.toString().substring(0, 10)}',
+                style: TextStyle(fontSize: 14)),
+            Text(cut(),textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17),),
           ]),
           margin: EdgeInsets.fromLTRB(0, 1, 0, 1),
           padding: const EdgeInsets.all(2),
@@ -130,7 +130,7 @@ class _MainPageState extends State<MainPage> {
             descriptionToShow, imageToShow, handleGoBack, loggedLogin, handleDelete)
         : ListView.builder(
             padding: const EdgeInsets.all(8.0),
-            itemExtent: 106.0,
+            itemExtent: 110.0,
             itemCount: eventList.length,
             itemBuilder: (context, index) {
               final item = eventList[index];
